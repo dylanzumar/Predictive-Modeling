@@ -1,0 +1,71 @@
+---
+title: "PredictiveModelingAssessment"
+output: html_document
+date: "2023-03-28"
+author: "Dylan Zumar"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Dependencies
+
+```{r}
+library(caret)
+library(tidyverse)
+library(ggplot2)
+```
+
+```{r}
+training <- read.csv('PredictiveModelingAssessmentData.csv')
+```
+
+```{r}
+training %>%
+  ggplot(mapping=aes(x=x1, y=y)) +
+  geom_point()
+
+training %>%
+  ggplot(mapping=aes(x=x2, y=y)) +
+  geom_point()
+
+training %>%
+  ggplot(mapping=aes(x=x2, y=x1)) +
+  geom_point()
+
+ggplot(data=training, mapping=aes(x=x1)) +
+  geom_histogram(bins = 30)
+training %>%
+  mutate(log_x2 = log(x2)) %>%
+  ggplot(mapping=aes(x=log_x2)) +
+  geom_histogram(bins = 30)
+
+training %>%
+  mutate(log_x2 = log(x2)) %>%
+  ggplot(mapping=aes(x=log_x2, y=x1)) +
+  geom_point()
+
+ggplot(data=training, mapping=aes(x=y)) +
+  geom_histogram(bins = 30)
+
+ml = lm(x1~x2, data = training) 
+
+# Extracting R-squared parameter from summary 
+summary(ml)$r.squared 
+
+training_log <- training %>%
+  mutate(log_x2 = log(x2))
+```
+
+
+```{r}
+set.seed(0)
+model <- train(y ~ x1 + x1^2 + log_x2, data = training_log, method = "rf")
+print(model)
+
+model2 <- train(y ~ x1 + x2, data = training_log, method = "rf")
+print(model2)
+```
+
+

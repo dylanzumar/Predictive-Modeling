@@ -1,0 +1,28 @@
+{
+    "id": "7BDFEC4F",
+    "path": "/cloud/project/PredictiveModelingAssessment.Rmd",
+    "project_path": "PredictiveModelingAssessment.Rmd",
+    "type": "r_markdown",
+    "hash": "119001422",
+    "contents": "",
+    "dirty": false,
+    "created": 1679980039588.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "68,3",
+        "scrollLine": "57",
+        "last_setup_crc32": ""
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1680039559,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1713108323787,
+    "read_only": false,
+    "read_only_alternatives": []
+}
